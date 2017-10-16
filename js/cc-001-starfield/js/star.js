@@ -1,5 +1,5 @@
 class Star {
-  constructor (x, y, z = 0) {
+  constructor (x, y, z = 100) {
     this._x = x;
     this._y = y;
     this._z = z;
@@ -18,22 +18,26 @@ class Star {
   }
 
   update () {
-    this._z += (this._z / 300) +0.001;
+    this._z -= 50;
   }
 
   needsReset(xTop, yTop, xBottom, yBottom) {
-    let coordX = this._x * this._z;
-    let coordY = this._y * this._z;
+    let coordX = this._x / this._z;
+    let coordY = this._y / this._z;
+
+    if (this._z < 1) {
+      return true;
+    }
 
     if (xTop < coordX &&
       xBottom > coordX &&
         yTop < coordY &&
         yBottom > coordY
     ) {
-      return true;
+      return false;
     }
 
-    return false;
+    return true;
   }
 
   reset (x, y, z) {
@@ -45,8 +49,8 @@ class Star {
   draw(canvas) {
     canvas.context.fillStyle="#FFFFFF";
 
-    let coordX = this._x * this._z;
-    let coordY = this._y * this._z;
+    let coordX = this._x / this._z * canvas.width;
+    let coordY = this._y / this._z * canvas.height;
 
     canvas.context.fillRect(coordX, coordY, 1, 1);
   }
