@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // Draw Objects to the canvas
   canvas.draw(
     function () {
-      console.log('draw');
+
     }
   );
 });

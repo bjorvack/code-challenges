@@ -11,6 +11,15 @@ class Canvas {
     }
 
     this.setup();
+    window.addEventListener('resize', this.setup.bind(this));
+  }
+
+  get width () {
+    return this.canvas.width / this.ratio;
+  }
+
+  get height () {
+    return this.canvas.height / this.ratio;
   }
 
   get canvas () {
@@ -45,17 +54,18 @@ class Canvas {
       this._context.backingStorePixelRatio || 1;
     this._ratio = devicePixelRatio / backingStoreRatio;
 
+    let oldWidth = document.body.clientWidth;
+    let oldHeight = document.body.clientHeight;
+    this._canvas.style.background = this._background;
+    this._canvas.width = oldWidth;
+    this._canvas.height = oldHeight;
+    this._context.scale(1, 1);
 
     if (devicePixelRatio !== backingStoreRatio) {
-
-      let oldWidth = document.body.clientWidth;
-      let oldHeight = document.body.clientHeight;
 
       this._canvas.width = oldWidth * this._ratio;
       this._canvas.height = oldHeight * this._ratio;
 
-
-      this._canvas.style.background = this._background;
       this._canvas.style.width = oldWidth + 'px';
       this._canvas.style.height = oldHeight + 'px';
 
