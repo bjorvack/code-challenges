@@ -5,6 +5,8 @@ class Canvas {
     this._ratio = 1;
     this._framesPerSecond = framesPerSecond;
     this._background = background;
+    this._originX = 0;
+    this._originY = 0;
 
     if (framesPerSecond <= 0) {
       this._framesPerSecond = 60;
@@ -35,7 +37,13 @@ class Canvas {
   }
 
   clear () {
-    this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
+    this._context.clearRect(-this._originX, -this._originY, this._canvas.width, this._canvas.height);
+  }
+
+  translate (x, y) {
+    this.context.translate(x, y);
+    this._originX = x;
+    this._originY = y;
   }
 
   draw (func) {
