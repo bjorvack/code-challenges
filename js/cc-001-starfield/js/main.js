@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   canvas.translate(canvas.width/2, canvas.height/2)
 
   let stars = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 500; i++) {
     stars.push(new Star(
       Math.random() * canvas.width - canvas.width / 2,
       Math.random() * canvas.height - canvas.height / 2,
@@ -14,14 +14,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   // Run logic
   setInterval(function () {
-    let xTop = -canvas.width / 2;
-    let yTop = -canvas.height / 2;
-    let xBottom = canvas.width / 2;
-    let yBottom = canvas.height / 2;
     for (let i = 0; i < stars.length; i++) {
       stars[i].update();
 
-      if (stars[i].needsReset(xTop, yTop, xBottom, yBottom )) {
+      if (stars[i].needsReset()) {
         stars[i].reset(
           Math.random() * canvas.width - canvas.width / 2,
           Math.random() * canvas.height - canvas.height / 2,
