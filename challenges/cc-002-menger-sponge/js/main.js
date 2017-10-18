@@ -1,17 +1,38 @@
-document.addEventListener("DOMContentLoaded", function(event) {
-  // Setup Objects
-  let canvas = new Canvas(document.getElementById('canvas'));
-  canvas.translate(canvas.width/2, canvas.height/2)
+let cubes = [];
+let a = 0;
+let clicked = 0;
 
-  // Run logic
-  setInterval(function () {
+function setup() {
+  createCanvas(document.body.clientWidth, document.body.clientHeight, 'webgl');
 
-  }, 1000/60)
+  cubes.push(new Cube(0,0,0, 200));
+}
 
-  // Draw Objects to the canvas
-  canvas.draw(
-    function () {
+function mousePressed() {
+    if (clicked < 3) {
+        // Generate the next set of boxes
+        var next = [];
+        for (var i = 0; i < cubes.length; i++) {
+            var b = cubes[i];
+            var newBoxes = b.split();
+            next = next.concat(newBoxes);
+        }
+        cubes = next;
+    }
 
-    }.bind(canvas)
-  );
-});
+    clicked ++;
+}
+
+function draw() {
+    background('#222222');
+
+    rotateX(a);
+    rotateY(a * 0.4);
+    rotateZ(a * 0.1);
+
+    for (let i = cubes.length - 1; i >= 0; i --) {
+      cubes[i].draw();
+    }
+    a += 0.01;
+}
+
