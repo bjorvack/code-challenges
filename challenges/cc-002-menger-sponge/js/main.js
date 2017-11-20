@@ -12,9 +12,9 @@ function mousePressed() {
     if (clicked < 3) {
         // Generate the next set of boxes
         var next = [];
-        for (var i = 0; i < cubes.length; i++) {
-            var b = cubes[i];
-            var newBoxes = b.split();
+        for (let i = 0; i < cubes.length; i++) {
+            let b = cubes[i];
+            let newBoxes = b.split();
             next = next.concat(newBoxes);
         }
         cubes = next;
