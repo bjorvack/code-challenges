@@ -6,6 +6,24 @@ class GameLoop {
 
         this._renderer = new Renderer(program);
         this._running = false;
+
+        this._mesh = new Mesh(
+            [
+                0, 0,
+                0, 0.5,
+                0.7, 0,
+                0, 0.5,
+                0.7, 0,
+                0.7, 0.5,
+            ],
+            [],
+            new Color(
+                Math.random(),
+                Math.random(),
+                Math.random(),
+                Math.random() * 0.5  + 0.5
+            )
+        );
     }
 
     start () {
@@ -19,15 +37,9 @@ class GameLoop {
                 return;
             }
 
-            this._renderer.updateModels([
-                0, 0,
-                0, 0.5,
-                0.7, 0,
-            ]);
-
             /** Main draw loop */
             requestAnimationFrame(function() {
-                this._renderer.render()
+                this._renderer.render(this._mesh);
             }.bind(this));
         }.bind(this));
 
