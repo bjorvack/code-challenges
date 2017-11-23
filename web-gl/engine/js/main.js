@@ -1,27 +1,14 @@
-class Main {
-    constructor () {
-        console.log('Setting up the engine');
-        this._canvas = new Canvas();
-    }
-
-    /**
-     * Runs the game logic
-     */
-    run () {
-        this._draw();
-    }
-
-    _draw() {
-        console.log('Draw the scene')
-        this._canvas.draw(function (gl) {
-            console.log(gl);
-        });
-    }
-}
-
-let main;
+const canvas = document.getElementById("display");
+const gl = canvas.getContext("webgl2");
+let gameLoop;
 
 document.addEventListener("DOMContentLoaded", function() {
-    main = new Main();
-    main.run();
+    if (!gl) {
+        console.log('no webgl support');
+
+        return false;
+    }
+
+    gameLoop = new GameLoop();
+    gameLoop.start();
 });
