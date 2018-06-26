@@ -19,7 +19,7 @@ class Canvas {
             return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         }
 
-        const x = this.map(
+        const x = map(
             point.x,
             -2.1820,
             2.6558,
@@ -27,7 +27,7 @@ class Canvas {
             (this._canvas.width / this._ratio)
         );
 
-        const y = this.map(
+        const y = map(
             point.y,
             0,
             9.9983,
