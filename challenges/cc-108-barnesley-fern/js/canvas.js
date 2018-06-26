@@ -14,11 +14,11 @@ class Canvas {
         return this._context;
     }
 
-    map (num, in_min, in_max, out_min, out_max) {
-        return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-    };
-
     drawPoint(point, radius, color) {
+        function map(num, in_min, in_max, out_min, out_max) {
+            return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+        }
+
         const x = this.map(
             point.x,
             -2.1820,
