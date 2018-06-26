@@ -12,4 +12,4 @@ This repository is used to collect coding challenges.
 
 [Coding Challenge #3: Snake in Javascript](https://bjorvack.github.io/code-challenges/challenges/cc-003-snake/)
 
-[Coding Challenge #108: Barnesley fern in Javascript](https://bjorvack.github.io/code-challenges/challenges/cc-108-barnsley-fern/)
+[Coding Challenge #108: Barnsley fern in Javascript](https://bjorvack.github.io/code-challenges/challenges/cc-108-barnsley-fern/)
