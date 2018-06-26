@@ -69,7 +69,5 @@ class Canvas {
 
             this._context.scale(this._ratio, this._ratio);
         }
-
-        //this._context.translate(oldWidth / 2, oldHeight);
     }
 }
